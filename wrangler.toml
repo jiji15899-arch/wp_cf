@@ -26,4 +26,4 @@ id      = "9b1dfc61087e44da877e6b49e5083237"            # wrangler kv:namespace 
 # 그러면 안전하게 시크릿 키 입력 프롬프트가 뜸
 [vars]
 # 개발용만 — 프로덕션에서는 반드시 wrangler secret 사용
-# WP_SECRET = "dev-only-change-me"
+# WP_SECRET = "Swsh120327!"
