@@ -1,0 +1,29 @@
+name = "wp-storage-backend"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# ── D1 Database ───────────────────────────────────────────────────────────────
+# 생성 명령: npx wrangler d1 create wp-storage-db
+[[d1_databases]]
+binding  = "DB"
+database_name = "cf-wp-storage"
+database_id   = "c9a0ad18-9c6f-4217-87d2-f9ef21b71610"   # wrangler d1 create 실행 후 여기에 ID 붙여넣기
+
+# ── KV Namespaces ─────────────────────────────────────────────────────────────
+# 생성 명령: npx wrangler kv:namespace create SESSION_KV
+[[kv_namespaces]]
+binding = "cf_wp_kv."
+id      = "b5ad3d1dfca94089aa6ad5fbbb43e55c"          # wrangler kv:namespace create 실행 후 ID 붙여넣기
+
+# 생성 명령: npx wrangler kv:namespace create CACHE_KV
+[[kv_namespaces]]
+binding = "CACHE_KV"
+id      = "9b1dfc61087e44da877e6b49e5083237"            # wrangler kv:namespace create 실행 후 ID 붙여넣기
+
+# ── Secrets (환경변수) ─────────────────────────────────────────────────────────
+# 배포 후 실행: npx wrangler secret put WP_SECRET
+# 그러면 안전하게 시크릿 키 입력 프롬프트가 뜸
+[vars]
+# 개발용만 — 프로덕션에서는 반드시 wrangler secret 사용
+# WP_SECRET = "dev-only-change-me"
